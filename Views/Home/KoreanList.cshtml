@@ -1,0 +1,41 @@
+﻿@using OrderWorldFood.Entity
+@model IEnumerable<Product>
+@{
+    ViewBag.Title = "KoreanList";
+}
+
+    <div class="row">
+
+        <div class="jumbotron" style="background-image:url('/theme/img/home/korean.jpg')">
+            <h1 class="display-12 mt-lg-5">Welcome to Turkish Foods!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p class="mt-5">It uses utility classes for typography and spacing to space content out within the larger container.</p>
+
+        </div>
+
+
+
+        @foreach (var urun in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="~/Upload/@urun.Image" alt="@urun.Name">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/Home/KoreanDetail?id=@urun.Id">@urun.Name</a></h5>
+                        <p class="card-text">@urun.Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text"><small class="text-muted"><i class="fa fa-usd" aria-hidden="true"></i>@urun.Price</small></p>
+                        <a href="/Home/KoreanDetail?id=@urun.Id" class="btn btn-primary btn-sm float-right">
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            Details
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        }
+    </div>

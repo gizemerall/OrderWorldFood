@@ -1,0 +1,92 @@
+﻿@model IEnumerable<OrderWorldFood.Entity.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container pb-5">
+<h2>New Product</h2>
+<hr/>
+<p>
+    @Html.ActionLink("New Product", "Create",null,new {@class="btn btn-success" })
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        <img src="~/Upload/@item.Image" width="70" />
+    </td>
+    <td>
+        @Html.DisplayNameFor(model => model.Category.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+
+    <td>
+        @if (item.Available)
+        {
+            <label class="badge badge-success">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Available
+            </label>
+        }
+        else
+        {
+            <label class="badge badge-danger">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Currently not available
+            </label>
+
+        }
+    </td>
+    <td>
+        @if (item.IsApproved)
+        {
+            <label class="badge badge-success">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Approved
+            </label>
+        }
+        else
+        {
+            <label class="badge badge-danger">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Not Approved
+            </label>
+
+        }
+    </td>
+  
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id },new {@class="btn btn-primary btn-sm" }) 
+       
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id },new {@class="btn btn-danger btn-sm" })
+    </td>
+</tr>
+}
+
+</table>
+</div>

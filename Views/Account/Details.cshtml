@@ -1,0 +1,91 @@
+﻿@model OrderWorldFood.Models.OrderDetailsModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2 class="mt-5">Ordering Details Information</h2>
+            <hr />
+
+            <dl class="row">
+
+                <dt class="col-sm-3">Order State</dt>
+                <dd class="col-sm-9">
+                    @if(Model.OrderState == OrderWorldFood.Entity.EnumOrderState.Waiting)
+                    {
+                        <span class="badge badge-danger">Pending Approvel</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-success">Ordering completed</span>
+                    }
+                </dd>
+                
+
+                <dt class="col-sm-3">Order Id</dt>
+                <dd class="col-sm-9">@Model.OrderId</dd>
+
+                <dt class="col-sm-3">Order Number</dt>
+                <dd class="col-sm-9">@Model.OrderNumber</dd>
+
+                <dt class="col-sm-3">Total</dt>
+                <dd class="col-sm-9">@Model.Total</dd>
+
+                <dt class="col-sm-3">Order Date</dt>
+                <dd class="col-sm-9">@Model.OrderDate</dd>
+
+
+
+                <dt class="col-sm-3">Adress/dt>
+                <dd class="col-sm-9">
+
+                    @Model.AdressHead
+                    <hr />
+                    @Model.Adress1
+                    <br />
+                    @Model.City - @Model.Distrinct - @Model.Distrinct
+                    <br />
+                    @Model.postalCode
+
+                </dd>
+
+
+                <dt class="col-sm-3">Products</dt>
+                <dd class="col-sm-9">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Orderlines)
+                            {
+                            <tr>
+
+                                <td><img src="~/Upload/@item.Image" width="70"</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.price</td>
+                                <td>
+                                <a href="/Home/IndianDetail?id=@item.ProductId" class="btn btn-primary">Product Details</a></td>
+                            </tr>
+                            }
+                        </tbody>
+
+                    </table>
+
+
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+

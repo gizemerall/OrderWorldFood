@@ -1,0 +1,85 @@
+﻿@model OrderWorldFood.Models.ShippingDetails
+
+@{
+    ViewBag.Title = "Checkout";
+}
+<style>
+    .field-validation-error {color:#f00;}
+    .field-validation-valid {display:none;}
+    .input-validation-error {border:1px solid #f00; background-color:#fee} 
+    .validation-summary-error {font-weight:bold; color:#f00;}
+    .validation-summary-valid {display:none;}
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mt-5">Shopping Details</h2>
+            <p>Please fill the form</p>
+            <hr />
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">User Name: </label>
+                    <div class="col-sm-6">
+                        <span class="badge-danger">@User.Identity.Name</span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">AdressHead: </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(x => x.AdressHead, new { @class = "form-controller" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Adress: </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(x => x.Adress1, new { @class = "form-controller" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">City: </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(x => x.City, new { @class = "form-controller" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Distrinct: </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(x => x.Distrinct, new { @class = "form-controller" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Street: </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(x => x.Street, new { @class = "form-controller" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Postalcode: </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(x => x.postalCode, new { @class = "form-controller" })
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            }
+        </div>
+
+    </div>
+
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

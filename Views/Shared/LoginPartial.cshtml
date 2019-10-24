@@ -1,0 +1,31 @@
+﻿<style>
+    li a.ac{
+        margin-right:20px;
+        background:#ff6a00;
+    }
+
+</style>
+<ul>
+
+    @if (Request.IsAuthenticated)
+    {
+        //kullanıcı adı ve logout linklerini çıkar
+
+        <li><a href="/Home/TurkishList">TURKISH</a></li>
+        <li><a href="/Home/IndianList">INDIAN</a></li>
+        <li><a href="/Home/ItalianList">ITALIAN</a></li>
+        <li><a href="/Home/KoreanList">KOREAN</a></li>
+        <li><a class="ac" href="/Account">@User.Identity.Name</a></li>
+        <li><a class="ac" href="/Account/Logout">Log Out</a></li>
+        @Html.Action("Summary", "Cart")
+
+
+    }
+    else
+    {
+        //login ve register linklerini cıkart
+        <li><a class="active" href="/Account/Login">Log In</a></li>
+        <li><a class="active" href="/Account/Register">Register</a></li>
+    }
+
+</ul>
